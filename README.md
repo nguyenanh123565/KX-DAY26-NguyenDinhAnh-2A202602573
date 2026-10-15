@@ -239,3 +239,17 @@ Chi tiết + code cho cả 3 phần: xem [`03-production/README.md`](03-producti
 ---
 
 **Tóm lại:** Function Calling là *cơ chế model gọi công cụ*; MCP là *chuẩn để kết nối model với các công cụ đó* — và MCP thực chất dùng Function Calling làm nền tảng để hoạt động.
+
+## Submission Evidence
+
+Danh sách ảnh chụp lab trong `screenshots/` để đối chiếu trước khi nộp:
+
+1. [Function Calling](screenshots/01-function-calling.png)
+2. [MCP client](screenshots/02-mcp-client.png)
+3. [Authentication — token hợp lệ](screenshots/03a-auth-ok.png)
+4. [Authentication — token sai](screenshots/03a-auth-fail.png)
+5. [Tool Registry](screenshots/03b-registry.png)
+6. [Versioning](screenshots/03c-versioning.png)
+7. [Verify setup](screenshots/04-verify-setup.png)
+8. [ADK — current weather](screenshots/04-adk-current.png)
+9. [ADK — forecast](screenshots/04-adk-forecast.png)

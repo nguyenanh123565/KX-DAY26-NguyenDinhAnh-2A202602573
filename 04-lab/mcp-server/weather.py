@@ -1,8 +1,12 @@
 from typing import Any
 import asyncio
 import httpx
+import logging
 import os
 from mcp.server.fastmcp import FastMCP
+
+# WeatherAPI authenticates in the URL query; HTTPX's INFO request log exposes it.
+logging.getLogger("httpx").setLevel(logging.WARNING)
 
 # Initialize FastMCP server
 port = int(os.getenv("PORT", 8085))
@@ -36,13 +40,13 @@ async def make_weather_request(endpoint: str, params: dict[str, str]) -> dict[st
             response.raise_for_status()
             return response.json()
         except httpx.HTTPStatusError as e:
-            print(f"HTTP Error {e.response.status_code}: {e.response.text}")
+            print(f"HTTP Error {e.response.status_code}: {e.response.text.replace(API_KEY, '[REDACTED]')}")
             return None
         except httpx.RequestError as e:
-            print(f"Request Error: {e}")
+            print(f"Request Error: {str(e).replace(API_KEY, '[REDACTED]')}")
             return None
         except Exception as e:
-            print(f"Unexpected error: {e}")
+            print(f"Unexpected error: {str(e).replace(API_KEY, '[REDACTED]')}")
             return None
 
 @mcp.tool()
